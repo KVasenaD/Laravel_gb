@@ -20,7 +20,7 @@ class Controller extends BaseController
 			['id' => 'economics','title' => 'Экономика'],
 			['id' => 'culture','title' => 'Культура'],
 		 ];
-	
+
 
 		return $category;
 	}
@@ -31,14 +31,14 @@ class Controller extends BaseController
 
 		$news = [];
 
-		for($i = 0; $i < 5; $i++) {
+		for($i = 0; $i < 9; $i++) {
 			$news[] = [
 				'id'    => $i,
 				'title' => $faker->jobTitle(),
 				'category' => $id,
 				'description' => $faker->text(250),
 				'author' => $faker->userName()
- 			];
+			];
 		}
 
 		return $news;
@@ -56,5 +56,5 @@ class Controller extends BaseController
 		];
 	}
 
-    
+
 }
