@@ -113,9 +113,10 @@
       <path value="$PROJECT_DIR$/example-app/vendor/sebastian/comparator" />
       <path value="$PROJECT_DIR$/example-app/vendor/sebastian/code-unit" />
       <path value="$PROJECT_DIR$/example-app/vendor/sebastian/exporter" />
+      <path value="/Applications/Docker.app" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.3">
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.1">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
   <component name="PhpUnit">

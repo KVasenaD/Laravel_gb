@@ -3,20 +3,12 @@
     Категории
 @endsection
 @section('header')
-    <div class="carousel-inner">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Категории новостей</h1>
 
-
-        <div class="carousel-item active">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>Список категорий</h1>
-
-
-                </div>
-            </div>
         </div>
+    </div>
         @endsection
 @section('content')
 

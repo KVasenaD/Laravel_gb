@@ -11,6 +11,8 @@
                     <ul class="list-unstyled">
                         <li><a href="/categories" class="text-white">Категории</a></li>
                         <li><a href="/about" class="text-white">О нас</a></li>
+                        <li><a href="/feedback" class="text-white">Обратная связь</a></li>
+                        <li><a href="/order" class="text-white">Заказ</a></li>
 
 
                     </ul>
