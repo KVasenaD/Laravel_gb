@@ -13,9 +13,9 @@
         @section('content')
             <div class="container">
             <div>
-    <strong>{{$newsItem['title']}}</strong>
-    <p>{!! $newsItem['description'] !!}</p>
-    <em>Автор: {{$newsItem['author']}}</em>
+                <strong>{{ $news->title }}</strong>
+                <p>{!! $news->description !!}</p>
+                <em>Автор: {{ $news->author }}</em>
     <hr>
 </div>
             </div>
