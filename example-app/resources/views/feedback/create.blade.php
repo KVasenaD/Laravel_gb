@@ -12,6 +12,7 @@
 @endsection
 
 @section('content')
+    @include('inc.message')
     <div class="container">
         @if($errors->any())
             @foreach($errors->all() as $error)

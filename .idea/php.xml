@@ -114,9 +114,12 @@
       <path value="$PROJECT_DIR$/example-app/vendor/sebastian/code-unit" />
       <path value="$PROJECT_DIR$/example-app/vendor/sebastian/exporter" />
       <path value="/Applications/Docker.app" />
+      <path value="$PROJECT_DIR$/example-app/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/example-app/vendor/maximebf/debugbar" />
+      <path value="$PROJECT_DIR$/example-app/vendor/symfony/debug" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="8.1">
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.3">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
   <component name="PhpUnit">

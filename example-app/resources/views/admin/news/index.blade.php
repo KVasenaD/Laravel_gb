@@ -7,15 +7,17 @@
             <a href="{{ route('admin.news.create') }}"
                type="button" class="btn btn-sm btn-outline-secondary">Добавить новость</a>
         </div>
-
     </div>
 @endsection
 @section('content')
     <div class="table-responsive">
+        @include('inc.message')
+
         <table class="table table-bordered">
             <thead>
             <tr>
                 <th>#ID</th>
+                <th>Категория</th>
                 <th>Заголовок</th>
                 <th>Статус</th>
                 <th>Автор</th>
@@ -27,9 +29,9 @@
             @forelse($newsList as $news)
                 <tr>
                     <td>{{ $news->id }}</td>
+                    <td>{{ optional($news->category)->title }}</td>
                     <td>{{ $news->title }}</td>
                     <td>{{ $news->status }}</td>
-                    <td>{{ $news->author }}</td>
                     <td>{{ $news->description }}</td>
                     <td>
                         <a href="{{ route('admin.news.edit', ['news' => $news->id]) }}">Ред.</a> &nbsp;
@@ -41,5 +43,7 @@
             @endforelse
             </tbody>
         </table>
+
+        {{ $newsList->links() }}
     </div>
 @endsection

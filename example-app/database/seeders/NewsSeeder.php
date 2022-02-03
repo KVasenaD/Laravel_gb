@@ -28,8 +28,7 @@ class NewsSeeder extends Seeder
                 'category_id' => 1,
                 'title' => $title,
                 'slug'  => \Str::slug($title),
-                'description' => $faker->text(mt_rand(100, 200)),
-                'source' => $faker->text(mt_rand(100, 200))
+                'description' => $faker->text(mt_rand(100, 200))
             ];
         }
 

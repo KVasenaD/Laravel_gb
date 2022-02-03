@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 use App\Models\Category;
-use App\Models\News;
+use App\QueryBuilders\CategoriesQueryBuilder;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
 
-    public function index()
+    public function index(CategoriesQueryBuilder $queryBuilder)
     {
-        $model = new Category();
-        $category= $model->categoryNews();
+        $categories = Category::with('news')->paginate(5);
 
         return view('news.categories', [
-            'category' => $category
+            'categories' => $categories
         ]);
     }
 }

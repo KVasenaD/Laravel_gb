@@ -1,25 +1,22 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Schema\Builder;
 
-class Category extends Model
+class Feedback extends Model
 {
     use HasFactory;
+
     public static $availableFields = [
-        'title', 'description'
+        'title', 'description',
     ];
 
-    protected $table = 'categories';
+    protected $table = 'feedback';
     protected $fillable = [
         'title',
         'description'
     ];
-    public function news(): HasMany
-    {
-        return $this->hasMany(News::class, 'category_id', 'id');
-    }
 }

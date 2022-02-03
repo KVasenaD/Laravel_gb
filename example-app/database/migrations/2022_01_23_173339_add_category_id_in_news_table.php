@@ -30,6 +30,10 @@ class AddCategoryIdInNewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news');
+        Schema::table('news', function (Blueprint $table) {
+            $table->dropIndex(['slug', 'status', 'display']);
+            $table->dropForeign('category_id');
+            $table->dropColumn('category_id');
+        });
     }
 }
