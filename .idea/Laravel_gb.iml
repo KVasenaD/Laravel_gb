@@ -119,6 +119,9 @@
       <excludeFolder url="file://$MODULE_DIR$/example-app/vendor/sebastian/comparator" />
       <excludeFolder url="file://$MODULE_DIR$/example-app/vendor/sebastian/code-unit" />
       <excludeFolder url="file://$MODULE_DIR$/example-app/vendor/sebastian/exporter" />
+      <excludeFolder url="file://$MODULE_DIR$/example-app/vendor/barryvdh/laravel-debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/example-app/vendor/maximebf/debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/example-app/vendor/symfony/debug" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

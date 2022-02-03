@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\OrderController;
@@ -34,15 +35,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
 Route::get('/about', [AboutController::class, 'index']);
 Route::resource('/order', OrderController::class);
 Route::resource('/feedback', FeedbackController::class);
-Route::get('/categories', [NewsController::class, 'categories'])
+
+Route::get('/categories', [CategoryController::class, 'index'])
 	->name('news.categories');
 
-Route::get('/categories/{id}', [NewsController::class, 'show'])
-	->where('id', '\w+')
-	->name('news.show');
+Route::get('/categories/{id}', [NewsController::class, 'index'])
+    ->where('id', '\w+')
+    ->name('news.index');
 
-Route::get('/news/{id}', [NewsController::class, 'index'])
-	->where('id', '\d+')
-	->name('news.index');
+Route::get('/news/{id}', [NewsController::class, 'show'])
+    ->where('news', '\d+')
+    ->name('news.show');
 
 

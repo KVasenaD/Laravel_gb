@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -32,13 +33,22 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => ['required', 'string', 'min:5']
+            'title' => ['required', 'string', 'min:3']
         ]);
 
-        $data = json_encode($request->all());
-        file_put_contents(public_path('news/data.json'), $data);
+        $created = Order::create(
+            $request->only(['title', 'number','email', 'description'])
 
-        return response()->json($request->all());
+        );
+
+        if ($created) {
+            return redirect()->route('order.create')
+                ->with('success', 'Запись успешно добавлена');
+        }
+
+        return back()->with('error', 'Не удалось добавить запись')
+            ->withInput();
+
     }
 }
 

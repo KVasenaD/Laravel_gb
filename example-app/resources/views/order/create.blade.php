@@ -12,6 +12,7 @@
 @endsection
 
 @section('content')
+    @include('inc.message')
     <div class="container">
         @if($errors->any())
             @foreach($errors->all() as $error)
@@ -26,12 +27,12 @@
                     <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
                 </div>
                 <div class="form-group">
-                    <label for="title">Номер телефона</label>
-                    <input type="text" class="form-control" id="title" name="title" value="{{ old('number') }}">
+                    <label for="number">Номер телефона</label>
+                    <input type="text" class="form-control" id="number" name="number" value="{{ old('number') }}">
                 </div>
                 <div class="form-group">
-                    <label for="title">Email</label>
-                    <input type="text" class="form-control" id="title" name="title" value="{{ old('email') }}">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}">
                 </div>
                 <div class="form-group">
                     <label for="description">Комментарий</label>

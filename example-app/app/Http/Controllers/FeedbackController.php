@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Feedback;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -31,13 +32,22 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => ['required', 'string', 'min:5']
-        ]);
+//        $request->validate([
+//            'name' => ['required', 'string', 'min:5']
+//        ]);
 
-        $data = json_encode($request->all());
-        file_put_contents(public_path('news/feedback.json'), $data);
+        $created = Feedback::create(
+            $request->only(['title', 'description'])
 
-        return view('feedback.create');
+        );
+
+        if ($created) {
+            return redirect()->route('feedback.create')
+                ->with('success', 'Запись успешно добавлена');
+        }
+
+        return back()->with('error', 'Не удалось добавить запись')
+            ->withInput();
+
     }
 }
