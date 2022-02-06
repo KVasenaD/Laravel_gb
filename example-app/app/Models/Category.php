@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Schema\Builder;
 
 class Category extends Model
 {
@@ -17,6 +18,9 @@ class Category extends Model
     protected $fillable = [
         'title',
         'description'
+    ];
+    protected $casts = [
+        'display' => 'boolean'
     ];
     public function news(): HasMany
     {

@@ -12,7 +12,6 @@
 @endsection
 
 @section('content')
-    @include('inc.message')
     <div class="container">
         @if($errors->any())
             @foreach($errors->all() as $error)
@@ -25,18 +24,22 @@
                 <div class="form-group">
                     <label for="title">Имя</label>
                     <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
+                    @error('title') <strong style="color:red;">{{ $message }}</strong> @enderror
                 </div>
                 <div class="form-group">
                     <label for="number">Номер телефона</label>
                     <input type="text" class="form-control" id="number" name="number" value="{{ old('number') }}">
+                    @error('number') <strong style="color:red;">{{ $message }}</strong> @enderror
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}">
+                    @error('email') <strong style="color:red;">{{ $message }}</strong> @enderror
                 </div>
                 <div class="form-group">
                     <label for="description">Комментарий</label>
                     <textarea class="form-control" name="description" id="description">{!! old('description') !!}</textarea>
+                    @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
                 </div>
                 <br>
                 <button type="submit" class="btn btn-success" style="float: right;">Отправить</button>

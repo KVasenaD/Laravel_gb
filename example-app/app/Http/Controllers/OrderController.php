@@ -1,7 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
+
 use App\Models\Order;
+use App\Http\Requests\Order\CreateRequest;
+use App\Http\Requests\Order\EditRequest;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -30,14 +33,10 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        $request->validate([
-            'title' => ['required', 'string', 'min:3']
-        ]);
 
-        $created = Order::create(
-            $request->only(['title', 'number','email', 'description'])
+        $created = Order::create($request->validated()
 
         );
 
