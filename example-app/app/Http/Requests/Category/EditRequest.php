@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Http\Requests\News;
+namespace App\Http\Requests\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateRequest extends FormRequest
+class EditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,13 +26,8 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category_id' => ['required', 'integer'],
-            'title' => ['required', 'string', 'min:5'],
-            'author' => ['required', 'string', 'min:2'],
-            'status' => ['required', 'string'],
-            'image' => ['nullable', 'file', 'image', 'mimes:jpg,png'],
+            'title' => ['required', 'string', 'alpha', 'min:5'],
             'description' => ['nullable', 'string', 'max:1000'],
-            'display' => ['nullable', 'boolean']
         ];
     }
 
@@ -46,8 +42,7 @@ class CreateRequest extends FormRequest
     {
         return [
             'title' => 'наименование',
-            'author' => 'автор новости',
-            'description' => 'описание'
+
         ];
     }
 }

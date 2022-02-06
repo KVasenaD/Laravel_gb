@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Requests\News;
+namespace App\Http\Requests\Order;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,13 +25,10 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category_id' => ['required', 'integer'],
-            'title' => ['required', 'string', 'min:5'],
-            'author' => ['required', 'string', 'min:2'],
-            'status' => ['required', 'string'],
-            'image' => ['nullable', 'file', 'image', 'mimes:jpg,png'],
+            'title' => ['required', 'string', 'alpha', 'min:5'],
+            'number' => ['required', 'alpha_num'],
+            'email' => ['required', 'email:rfc,dns'],
             'description' => ['nullable', 'string', 'max:1000'],
-            'display' => ['nullable', 'boolean']
         ];
     }
 
@@ -45,9 +42,9 @@ class CreateRequest extends FormRequest
     public function  attributes(): array
     {
         return [
-            'title' => 'наименование',
-            'author' => 'автор новости',
-            'description' => 'описание'
+            'title' => 'имя',
+            'number' => 'номер телефона',
+            'email' => 'email',
         ];
     }
 }

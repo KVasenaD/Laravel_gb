@@ -3,6 +3,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Http\Requests\Category\CreateRequest;
+use App\Http\Requests\Category\EditRequest;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -17,7 +19,7 @@ class CategoryController extends Controller
 
         $categories = Category::with('news')->paginate(5);
         return view('admin.categories.index', [
-            'categories' => $categories
+            'category' => $categories
         ]);
     }
 
@@ -38,14 +40,13 @@ class CategoryController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
 //        $request->validate([
 //            'title' => ['required', 'string', 'min:5']
 //        ]);
 
-        $created = Category::create(
-            $request->only(['title', 'description'])
+        $created = Category::create($request->validated()
 
         );
 
@@ -61,10 +62,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Category $category
+     * @param Category $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Category $categories)
     {
         //
     }
@@ -75,10 +76,11 @@ class CategoryController extends Controller
      * @param Category $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $categories)
+    public function edit(Category $category)
     {
+        //$category = Category::all();
         return view('admin.categories.edit', [
-            'categories' => $categories
+            'category' => $category
         ]);
     }
 
@@ -89,9 +91,9 @@ class CategoryController extends Controller
      * @param Category $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $categories)
+    public function update(EditRequest $request, Category $categories)
     {
-        $updated = $categories->fill($request->only(['title','description']))->save();
+        $updated = $categories->fill($request->validated())->save();
 
         if ($updated) {
             return redirect()->route('admin.categories.index')
@@ -105,11 +107,16 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Category $category
+     * @param Category $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $categories)
     {
-        //
+        try{
+            $categories->delete();
+            return response()->json('ok');
+        }catch(\Exception $e) {
+            \Log::error("Error delete news item");
+        }
     }
 }

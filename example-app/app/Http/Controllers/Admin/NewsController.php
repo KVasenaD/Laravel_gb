@@ -48,17 +48,16 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param CreateRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
         $request->validate([
             'title' => ['required', 'string', 'min:5']
         ]);
 
-        $created = News::create(
-            $request->only(['category_id', 'title', 'author', 'status', 'description']) + [
+        $created = News::create($request->validated() + [
                 'slug' => \Str::slug($request->input('title'))
             ]
         );
@@ -103,7 +102,7 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+    @param EditRequest $request
      * @param News $news
      * @return \Illuminate\Http\Response
      */

@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title') Админка @endsection
 @section('header')
     <h1 class="h2">Админка</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
